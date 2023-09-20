@@ -35,6 +35,7 @@ namespace math_application
             ChartT = ChartType.Line;
             LineColor = Color.Black;
             graphics = this.CreateGraphics();
+            graphics.ScaleTransform(Width, Height);
 
         }
         Graphics graphics;
@@ -64,7 +65,7 @@ namespace math_application
                     graphics.DrawLine(pen, startAxisY, endAxisY);
 
                     // Draw grid lines
-                    int gridSize = 20; // Adjust the grid size as desired
+                    int gridSize = 10; // Adjust the grid size as desired
                     pen.Color = Color.LightGray;
 
                     // Vertical grid lines
