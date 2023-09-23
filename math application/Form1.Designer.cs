@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -36,7 +35,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.myChart1 = new math_application.myChart();
+            this.formsPlot1 = new ScottPlot.FormsPlot();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -92,8 +91,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.97152F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.02848F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -113,27 +112,26 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(613, 675);
+            this.panel1.Size = new System.Drawing.Size(614, 675);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.myChart1);
+            this.panel2.Controls.Add(this.formsPlot1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(622, 3);
+            this.panel2.Location = new System.Drawing.Point(623, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(639, 675);
             this.panel2.TabIndex = 1;
             // 
-            // myChart1
+            // formsPlot1
             // 
-            this.myChart1.ChartT = math_application.myChart.ChartType.Line;
-            this.myChart1.DataPoints = ((System.Collections.Generic.List<System.Drawing.PointF>)(resources.GetObject("myChart1.DataPoints")));
-            this.myChart1.LineColor = System.Drawing.Color.Black;
-            this.myChart1.Location = new System.Drawing.Point(64, 22);
-            this.myChart1.Name = "myChart1";
-            this.myChart1.Size = new System.Drawing.Size(332, 315);
-            this.myChart1.TabIndex = 0;
+            this.formsPlot1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formsPlot1.Location = new System.Drawing.Point(0, 0);
+            this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.formsPlot1.Name = "formsPlot1";
+            this.formsPlot1.Size = new System.Drawing.Size(639, 675);
+            this.formsPlot1.TabIndex = 1;
             // 
             // Form1
             // 
@@ -161,6 +159,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel1;
         private Panel panel2;
-        private myChart myChart1;
+        private ScottPlot.FormsPlot formsPlot1;
     }
 }

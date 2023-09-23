@@ -1,6 +1,8 @@
 using physics_equations;
 using System.Windows.Forms;
 using System.Linq;
+using ScottPlot;
+using System;
 
 namespace math_application
 {
@@ -9,11 +11,9 @@ namespace math_application
         PhysicsEquations physics = new PhysicsEquations();
         List<string> suggestions = new List<string>();
 
-        myChart chart;
         public Form1()
         {
             InitializeComponent();
-            chart = myChart1;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -111,11 +111,13 @@ namespace math_application
                     suggestions.Add(s);
                 }
             }
+            System.Drawing.Point cursorPosition = System.Windows.Forms.Cursor.Position;
             if (suggestions.Count > 0)
             {
                 listBox1.Enabled = true;
                 listBox1.Visible = true;
-                Point clientCursorPos = listBox1.Parent.PointToClient(Cursor.Position);
+                
+                Point clientCursorPos = listBox1.Parent.PointToClient(cursorPosition);
                 clientCursorPos = new Point(clientCursorPos.X,textBox1.Location.Y + textBox1.Size.Height);
                 listBox1.Location = clientCursorPos;
                 listBox1.DataSource = suggestions;
@@ -145,10 +147,16 @@ namespace math_application
         {
             string s = physics.calculateMultiple(textBox1.Text);
             label1.Text = s;
-            List<PointF> functionPoints = CalculatePointsOnX(Math.Cos, -100, 100,0.05);
-            chart.DataPoints = functionPoints;
+            List<PointF> functionPoints = CalculatePointsOnX(Math.Cos, -10, 10,0.05);
+            var func1 = new Func<double, double?>((x) => physics.GravitationalForceBergman(100,1000000000, x));
+            formsPlot1.Plot.PlotFunction(func1, Color.Red, markerShape: MarkerShape.none, lineStyle: LineStyle.Solid);
 
-            chart.paint();
+
+            formsPlot1.Plot.AddFunction(func1, lineWidth: 2);
+            // Manually set axis limits because functions do not have discrete data points
+            formsPlot1.Plot.SetAxisLimits(-10, 10, -1.5, 1.5);
+            formsPlot1.Refresh();
+
         }
 
 
@@ -164,6 +172,7 @@ namespace math_application
 
             return points;
         }
+
 
     }
 }

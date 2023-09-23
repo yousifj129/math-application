@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace math_application
 {
     public class myChart : UserControl
@@ -27,6 +26,9 @@ namespace math_application
             ChartT = ChartType.Line;
             LineColor = Color.Black;
             graphics = this.CreateGraphics();
+            Width = 1000;
+            Height = 1000;
+
 
         }
         public myChart(List<PointF> points)
@@ -35,16 +37,10 @@ namespace math_application
             ChartT = ChartType.Line;
             LineColor = Color.Black;
             graphics = this.CreateGraphics();
-            graphics.ScaleTransform(Width, Height);
-
+            Width = 1000;
+            Height = 1000;
         }
         Graphics graphics;
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Graphics g = e.Graphics;
-
-        }
         public void paint()
         {
             if (ChartT == ChartType.Line)
@@ -72,7 +68,7 @@ namespace math_application
                     for (float x = gridSize; x < Width; x += gridSize)
                     {
                         PointF startGridLine = new PointF(x + displacement.X, 0);
-                        PointF endGridLine = new PointF(x + displacement.X, Height);
+                        PointF endGridLine = new PointF(x  + displacement.X, Height);
                         graphics.DrawLine(pen, startGridLine, endGridLine);
                     }
 

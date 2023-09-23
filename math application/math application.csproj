@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ScottPlot.WinForms" Version="4.1.67" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\physics equations\physics equations\physics equations.csproj" />
   </ItemGroup>
 
